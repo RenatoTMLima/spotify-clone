@@ -1,4 +1,6 @@
 import server from './server.js'
+import { logger } from './util.js'
+import config from './config.js'
 
-server.listen(3000)
-.on('listening', () => console.log('server running on port 3000'))
+server.listen(config.port)
+.on('listening', () => logger.info(`server running on port ${config.port}`))
