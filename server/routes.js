@@ -7,7 +7,10 @@ const {
   pages: {
     homeHTML,
     controllerHTML
-  } 
+  } ,
+  constants: {
+    CONTENT_TYPE
+  }
 } = config
 
 const controller = new Controller()
@@ -45,6 +48,14 @@ async function routes(request, response) {
       stream,
       type
     } = await controller.getFileStream(url)
+
+    const contentType = CONTENT_TYPE[type]
+
+    if(contentType) {
+      response.writeHead(200, {
+        'Content-Type': contentType
+      })
+    }
     
     return stream.pipe(response)
   }
