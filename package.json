@@ -10,9 +10,9 @@
   "scripts": {
     "start": "node server/index.js",
     "dev": "nodemon -L server/index.js",
-    "test": "set LOG_DISABLED=true && set NODE_OPTIONS='--experimental-vm-modules --no-warnings' && jest --no-cache",
-    "test:watch": "set LOG_DISABLED=true && set NODE_OPTIONS='--experimental-vm-modules --no-warnings' && jest --no-cache --watchAll",
-    "test:cov": "set LOG_DISABLED=true && set NODE_OPTIONS='--experimental-vm-modules --no-warnings' && jest --no-cache --coverage tests/unit",
+    "test": "LOG_DISABLED=true NODE_OPTIONS='--experimental-vm-modules --no-warnings' jest --no-cache",
+    "test:watch": "LOG_DISABLED=true NODE_OPTIONS='--experimental-vm-modules --no-warnings' jest --no-cache --watchAll",
+    "test:cov": "LOG_DISABLED=true NODE_OPTIONS='--experimental-vm-modules --no-warnings' jest --no-cache --coverage tests/unit",
     "dev:docker": "docker-compose up live-reload"
   },
   "keywords": [],
@@ -24,6 +24,7 @@
   },
   "dependencies": {
     "pino": "^7.8.0",
-    "pino-pretty": "^7.5.3"
+    "pino-pretty": "^7.5.3",
+    "throttle": "^1.0.3"
   }
 }
